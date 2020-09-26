@@ -52,8 +52,9 @@ const app = new Vue({
     },
     async addUserPin(e) {
       if (
-        !this.pinSubmitted &&
-        confirm('Want to submit your pin where you just clicked?')
+        confirm(
+          'Want to submit a pin where you just clicked? Your name will be associated with it.'
+        )
       ) {
         await fetch('/api/pin', {
           method: 'POST',
