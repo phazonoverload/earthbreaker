@@ -4,7 +4,59 @@
   box-sizing: border-box;
 }
 
+body {
+  background: #fde497;
+  font-family: 'Bubblegum Sans', cursive;
+  padding: 1em;
+}
+
+.enter img {
+  max-height: 8em;
+  display: block;
+  margin: 0 auto 2em;
+}
+
+form {
+  max-width: 310px;
+  margin: 0 auto;
+  background: white;
+  padding: 1em;
+  border-radius: 10px;
+}
+
+form .input-group {
+  margin-bottom: 1em;
+}
+
+form input {
+  display: block;
+  width: 100%;
+  font-size: 1em;
+  padding: 0.25em;
+}
+
+form button {
+  width: 100%;
+  display: block;
+  background: #fde497;
+  border: none;
+  font-size: 1em;
+  padding: 0.5em;
+  border-radius: 5px;
+  font-family: 'Bubblegum Sans', cursive;
+  cursor: pointer;
+}
+small {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 2em);
+}
+
 #map {
-  height: 75vh;
-  width: 75vw;
+  flex: 1;
 }

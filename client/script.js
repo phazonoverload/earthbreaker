@@ -2,8 +2,8 @@ const app = new Vue({
   el: '#app',
   data: {
     view: 'enter',
-    code: 'four',
-    name: 'Kev',
+    code: '',
+    name: '',
     map: false,
     room: {},
     pinSubmitted: false,
@@ -12,6 +12,9 @@ const app = new Vue({
   },
   methods: {
     async enterRoom() {
+      if (!this.code || !this.name) {
+        return alert('Please provide a room code and username')
+      }
       const code = this.code.toLowerCase().trim()
       this.room = await this.getRoom()
       this.view = 'room'
