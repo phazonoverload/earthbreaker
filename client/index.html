@@ -16,10 +16,15 @@
     <div id="app">
       <section class="enter" v-if='view == "enter"'>
         <h1>Enter</h1>
+        <input type="text" v-model="name" placeholder="name" />
+        <input type="text" placeholder="Room ID" v-model="code" />
+        <button @click="enterRoom">Enter Room</button>
       </section>
       <section class="room" v-if='view == "room"'>
-        <div id="map"></div>
+        <h1>{{name}}: {{room.doc.code}} created {{room.doc.created}}</h1>
+        <small v-if="loading">Updating...</small>
       </section>
+      <div id="map"></div>
     </div>
     <script
       src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
