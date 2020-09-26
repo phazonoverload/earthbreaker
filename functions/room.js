@@ -10,9 +10,10 @@ exports.handler = async (event, context) => {
     const rooms = await mongo
       .db(process.env.MONGODB_DB_NAME)
       .collection('rooms')
-    const room = await rooms.findOne({ code })
+    let room = await rooms.findOne({ code })
     if (!room) {
       await rooms.insertOne({ code, pins: [], created: new Date() })
+      room = { code, pins: [], created: new Date() }
     }
     return {
       statusCode: 200,

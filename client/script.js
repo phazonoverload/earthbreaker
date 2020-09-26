@@ -19,6 +19,7 @@ const app = new Vue({
       this.room = await this.getRoom()
       this.view = 'room'
       this.loadMap()
+      this.loadAllPins()
     },
     async getRoom() {
       return new Promise(async (resolve, reject) => {
@@ -44,7 +45,10 @@ const app = new Vue({
       this.loading = false
 
       app.map.on('click', this.addUserPin)
-      setInterval(this.loadAllPins, 10000)
+      setInterval(async () => {
+        this.room = await this.getRoom()
+        await this.loadAllPins()
+      }, 10000)
     },
     async addUserPin(e) {
       if (
@@ -64,11 +68,11 @@ const app = new Vue({
       }
     },
     async loadAllPins() {
-      const room = await this.getRoom()
       for (let pin of this.pins) {
         this.map.removeLayer(pin)
       }
-      for (let pin of room.doc.pins) {
+      for (let pin of this.room.doc.pins) {
+        console.log(pin)
         this.pins.push(L.marker(pin.latlng).addTo(this.map))
         this.pins[this.pins.length - 1].bindPopup(`<b>${pin.name}</b>`)
       }

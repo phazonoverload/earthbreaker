@@ -34,7 +34,10 @@
         </form>
       </section>
       <section class="room" v-if='view == "room"'>
-        <h1>Welcome to {{room.doc.code}}, {{name}}!</h1>
+        <h1>
+          Welcome to {{room.doc.code}}, {{name}}! Click on the map to add your
+          pin.
+        </h1>
         <small v-if="loading">Updating...</small>
         <small v-else
           >This room was created {{ new
